@@ -16,12 +16,19 @@ function generatePin() {
 }
 document.getElementById('key-pad').addEventListener('click', function (e) {
     const calcInput = document.getElementById('typed-numbers');
+    const calcInputDisplayed = calcInput.value;
     const number = e.target.innerText;
     if (isNaN(number)) {
         if (number == 'C') {
+
             calcInput.value = '';
         }
+        else if (number == '<') {
+            const newText = calcInputDisplayed.slice(0, calcInputDisplayed.length - 1);
+            calcInput.value = newText;
+        }
     }
+
 
     else {
         const previousNumber = calcInput.value;
